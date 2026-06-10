@@ -1,37 +1,28 @@
 ---
-title: Academic Project Page Template
+title: "WildCity: A Real-World City-Scale Dataset and Testbed for Spatial Intelligence"
+tagline: "1,000+ km of real-world urban driving data across 6 U.S. cities for city-scale reconstruction, rendering, and embodied AI."
 authors:
-  - name: Roman Hauksson
-    url: https://roman.technology
-    institution: University of Texas at Dallas
-    notes: ["*", †]
-  - name: Author Two
-    institution: Institution Two
-    notes: ["*", †]
-  - name: Author Three
-    institution: Institution Three
-    notes: ["*"]
-  - name: Author Four
-    institution: Institution Four
-conference: Conference Name
-notes:
-  - symbol: "*"
-    text: author note one
-  - symbol: †
-    text: author note two
+  - name: Anonymous Author(s)
+conference: Preprint · Under Review
 links:
   - name: Paper
-    url: https://github.com/RomanHauksson/academic-project-astro-template
+    url: "#"
     icon: ri:file-pdf-2-line
   - name: Code
-    url: https://github.com/RomanHauksson/academic-project-astro-template
+    url: "#"
     icon: ri:github-line
-  - name: arXiv
-    url: https://github.com/RomanHauksson/academic-project-astro-template
-    icon: academicons:arxiv
-  - name: Slides
-    url: https://github.com/RomanHauksson/academic-project-astro-template
-    icon: ri:slideshow-2-line
+  - name: Dataset
+    url: "#"
+    icon: ri:database-2-line
+  - name: Benchmark
+    url: "#"
+    icon: ri:trophy-line
+  - name: Simulator
+    url: "#"
+    icon: ri:steering-2-line
+  - name: BibTeX
+    url: "#bibtex"
+    icon: ri:double-quotes-l
 
 # The color theme of the page. Defaults to "device" (the preference set in the user's brower or operating system). Setting this to "light" or "dark" will override the user's preference. This is useful if your figures only look good in one theme.
 theme: device
@@ -39,170 +30,192 @@ theme: device
 # This is the icon that appears in the user's browser tab. To customize, change the favicon.svg file in /public/, or add your own file to /public/ and change the filename here.
 favicon: favicon.svg
 
-# These keys are optional. If a link to your project page is in a Google search result, text message, or social media post, it will often appear as a "link preview card" based on its title, description, favicon, and thumbnail. After you publish your page, you can double check that these previews look right using [this tool](https://linkpreview.xyz/)
-description: Simple project page template for your research paper, built with Astro and Tailwind
+# These keys are optional. If a link to your project page is in a Google search result, text message, or social media post, it will often appear as a "link preview card" based on its title, description, favicon, and thumbnail.
+description: A real-world, city-scale multimodal dataset and testbed for spatial intelligence — city-scale reconstruction, extrapolated urban view synthesis, and closed-loop simulation.
 thumbnail: screenshot-light.png
 ---
 
 import Video from "./components/Video.astro";
 import HighlightedSection from "./components/HighlightedSection.astro";
-import SmallCaps from "./components/SmallCaps.astro";
 import Figure from "./components/Figure.astro";
 import Picture from "./components/Picture.astro";
-import ModelViewer from "./components/ModelViewer.astro"
-import TwoColumns from "./components/TwoColumns.astro";
-import YouTubeVideo from "./components/YouTubeVideo.astro";
+import Wide from "./components/Wide.astro";
+import ThreeColumns from "./components/ThreeColumns.astro";
 import Carousel from "./components/Carousel.astro";
 import CarouselSlide from "./components/CarouselSlide.astro";
-import Wide from "./components/Wide.astro";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/starwind/tabs";
 import { Comparison } from "./components/Comparison.tsx";
 
-import outside from "./assets/outside.mp4";
-import dogsDiffc from "./assets/dogs-diffc.png"
-import dogsTrue from "./assets/dogs-true.png"
-import dogsMsillm from "@/assets/dogs-msillm.jpg"
+{/* TODO: replace placeholder assets below with WildCity media.
+    teaser.mp4, montage-{coverage,recon,sim}.png, coverage-map.png,
+    render-{gt,pred}.png, failure-*.png, scaling.pdf */}
+import teaser from "./assets/outside.mp4";
+import dogsTrue from "./assets/dogs-true.png";
+import dogsDiffc from "./assets/dogs-diffc.png";
+import dogsMsillm from "./assets/dogs-msillm.jpg";
 
-<Video src={outside} />
+{/* §2 — Teaser / Overview */}
+
+{/* TODO: replace with WildCity teaser.mp4 (city-scale trajectories, reconstruction, novel-view rendering, closed-loop replay montage). */}
+<Video src={teaser} />
+
+<Wide>
+  <ThreeColumns>
+    <Figure slot="left">
+      {/* TODO: replace with montage-coverage.png */}
+      <Picture slot="figure" src={dogsTrue} alt="City-scale data coverage (placeholder)" />
+      <Fragment slot="caption">City-scale data coverage</Fragment>
+    </Figure>
+    <Figure slot="middle">
+      {/* TODO: replace with montage-recon.png */}
+      <Picture slot="figure" src={dogsDiffc} alt="Reconstruction and rendering benchmark (placeholder)" />
+      <Fragment slot="caption">Reconstruction &amp; rendering benchmark</Fragment>
+    </Figure>
+    <Figure slot="right">
+      {/* TODO: replace with montage-sim.png */}
+      <Picture slot="figure" src={dogsMsillm} alt="Closed-loop simulator and embodied-AI testbed (placeholder)" />
+      <Fragment slot="caption">Closed-loop simulator / embodied-AI testbed</Fragment>
+    </Figure>
+  </ThreeColumns>
+</Wide>
+
+{/* §3 — Why WildCity? */}
 
 <HighlightedSection>
 
-## Abstract
+## Why WildCity?
 
-This is a template you can use to create a professional project page for your research paper. [See the code for the template and instructions on how to use it yourself on GitHub](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold**, _italics_, and ~strikethrough~, as well as custom components like <SmallCaps>small caps.</SmallCaps>
+- **Real-world city-scale multimodal dataset.**
+- **6 U.S. cities, 1,000+ km of roads, 2.14M keyframes.**
+- **Benchmark** for scalable urban reconstruction and extrapolated rendering.
+- **Testbed** for closed-loop simulation and spatial intelligence.
 
 </HighlightedSection>
 
-## Visuals
+{/* §4 — Dataset */}
 
-### Picture
+## Dataset
 
-Use the `Picture` component to display images. If you have a figure in PDF format, you can pass in its path as the `src` prop and it will be converted into a web-friendly image automatically.
+WildCity is collected from real-world urban driving across six U.S. cities, with synchronized surround-view cameras, LiDAR, IMU, and GPS.
 
-<Picture src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-
-### Wide visual
-
-I constrained the maximum width of the text column to make sure it's readable even when the screen is wide. But images and other visuals should "break out" and take up more horizontal space: for this, try wrapping them in the `Wide` component.
+| Category | WildCity |
+| :--- | :--- |
+| Cities | 6 U.S. cities |
+| Road coverage | 1,000+ km |
+| Trajectories | 18 |
+| Keyframes | 2.14M |
+| Cameras | 6 surround-view RGB |
+| RGB resolution / FPS | 1440×928 / 10 Hz |
+| LiDAR | 10 Hz |
+| IMU / GPS | 10 Hz / 2 Hz |
 
 <Wide>
-  <Picture src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
+  <Figure>
+    {/* TODO: replace with coverage-map.png (map / trajectory coverage across the 6 cities). */}
+    <Picture slot="figure" src={dogsTrue} alt="Map of trajectory coverage across cities (placeholder)" />
+    <Fragment slot="caption">Trajectory coverage across the six cities.</Fragment>
+  </Figure>
 </Wide>
 
-### Figure with caption
+{/* §5 — Benchmark Tasks */}
 
-Wrap a visual in a `Figure` component to add a caption.
+## Benchmark Tasks
 
-<Figure>
-  <Picture slot="figure" src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-  <Fragment slot="caption">A photo of two dogs running side-by-side in shallow water, lossily compressed using the [DiffC algorithm](https://jeremyiv.github.io/diffc-project-page/).</Fragment>
-</Figure>
+<ThreeColumns>
+  <div slot="left" class="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
+    <h3>Task 1 · City-scale Reconstruction</h3>
+    <p>Scalability, memory, compute, and reconstruction quality at city scale.</p>
+  </div>
+  <div slot="middle" class="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
+    <h3>Task 2 · Extrapolated Urban View Synthesis</h3>
+    <p>Cross-view, cross-trajectory, and long-range extrapolated rendering.</p>
+  </div>
+  <div slot="right" class="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
+    <h3>Task 3 · Closed-loop Simulation / Embodied AI</h3>
+    <p>Trajectory replay, sensor rendering, and policy evaluation in the loop.</p>
+  </div>
+</ThreeColumns>
 
-### Comparison slider
+{/* §6 — Results / Baselines */}
 
-Use the `Comparison` component to compare two visuals with an interactive slider.
+## Results
 
-<Comparison client:idle >
-  <Picture slot="itemOne" src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-  <Picture slot="itemTwo" src={dogsTrue} alt="True photo of two dogs running side-by-side in shallow water" />
+We show representative results to build intuition; full quantitative tables are in the paper.
+
+{/* TODO: replace with render-pred.png (left) and render-gt.png (right). */}
+<Comparison client:idle>
+  <Picture slot="itemOne" src={dogsDiffc} alt="Rendered novel view (placeholder)" />
+  <Picture slot="itemTwo" src={dogsTrue} alt="Ground-truth view (placeholder)" />
 </Comparison>
 
-### Tab panels
-
-Tab panels are a great way to display a labeled collection of related visuals without taking up too much space.
-
-<Tabs defaultValue="true">
+<Tabs defaultValue="rendering">
   <TabsList>
-    <TabsTrigger value="true">Ground truth</TabsTrigger>
-    <TabsTrigger value="diffc">DiffC (Flux-dev)</TabsTrigger>
-    <TabsTrigger value="msillm">MS-ILLM</TabsTrigger>
+    <TabsTrigger value="rendering">Cross-city rendering</TabsTrigger>
+    <TabsTrigger value="failure">Failure cases</TabsTrigger>
+    <TabsTrigger value="scaling">Compute &amp; memory</TabsTrigger>
   </TabsList>
-  <TabsContent value="true">
-    <Picture
-      src={dogsTrue}
-      alt="True photo of two dogs running side-by-side in shallow water"
-    />
+  <TabsContent value="rendering">
+    {/* TODO: replace each slide with a per-city rendering example. */}
+    <Carousel>
+      <CarouselSlide>
+        <Picture src={dogsTrue} alt="Rendering example, city 1 (placeholder)" />
+      </CarouselSlide>
+      <CarouselSlide>
+        <Picture src={dogsDiffc} alt="Rendering example, city 2 (placeholder)" />
+      </CarouselSlide>
+      <CarouselSlide>
+        <Picture src={dogsMsillm} alt="Rendering example, city 3 (placeholder)" />
+      </CarouselSlide>
+    </Carousel>
   </TabsContent>
-  <TabsContent value="diffc">
-    <Picture
-      src={dogsDiffc}
-      alt="Photo of two running dogs, lossily compressed using the DiffC algorithm"
-    />
+  <TabsContent value="failure">
+    <Figure>
+      {/* TODO: replace with failure-*.png (extrapolation, dynamic objects, uncertainty). */}
+      <Picture slot="figure" src={dogsMsillm} alt="Failure case (placeholder)" />
+      <Fragment slot="caption">
+        Failure modes: long-range extrapolation, dynamic objects, and uncertain regions.
+      </Fragment>
+    </Figure>
   </TabsContent>
-  <TabsContent value="msillm">
-    <Picture
-      src={dogsMsillm}
-      alt="Photo of two running dogs, lossily compressed using MS-ILLM"
-    />
+  <TabsContent value="scaling">
+    <Figure>
+      {/* TODO: replace with scaling.pdf (compute/memory vs. scene scale). Picture auto-converts PDFs. */}
+      <Picture slot="figure" src={dogsDiffc} alt="Compute and memory scaling (placeholder)" />
+      <Fragment slot="caption">Compute and memory scaling with scene size.</Fragment>
+    </Figure>
   </TabsContent>
 </Tabs>
 
-### Carousel
+{/* §7 — Release Scope & Privacy */}
 
-A carousel is another useful pattern for a collection of visuals that don't necessarily have meaningful labels.
+## Release Scope & Privacy
 
-<Carousel>
-  <CarouselSlide>
-    <Picture src={dogsTrue} alt="True photo of two dogs running side-by-side in shallow water" />
-  </CarouselSlide>
-  <CarouselSlide>
-    <Picture src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-  </CarouselSlide>
-  <CarouselSlide>
-    <Picture
-      src={dogsMsillm}
-      alt="Photo of two running dogs, lossily compressed using MS-ILLM"
-    />
-  </CarouselSlide>
-</Carousel>
+- We release **anonymized** sensor data only.
+- Faces and license plates are **blurred** (e.g., with EgoBlur).
+- Raw, **unblurred** images are **not** distributed.
+- Released modalities: **RGB, LiDAR, calibration, poses, masks, train/val/test splits, code, and configs**.
+- Sensitive locations are handled with care and excluded where appropriate.
+- Distributed under a documented **license / terms of use**.
+- Access is granted via a **dataset request form** (link coming soon).
 
-## Two columns
+{/* §8 — Code / Data / Leaderboard */}
 
-Use the two columns component to display two columns of content. In this example, the first column contains a YouTube video embed and the second column contains an interactive 3D model viewer. By default, they display side by side, but if the screen is narrow enough (for example, on mobile), they're arranged vertically.
+## Code, Data & Benchmark
 
-<TwoColumns>
-  <YouTubeVideo slot="left" videoId="wjZofJX0v4M" />
-  <ModelViewer slot="right" src="/BoxVertexColors.glb" alt="A cube colored with a rainbow gradient" />
-</TwoColumns>
+- **Code:** coming soon (GitHub).
+- **Data:** request access (download link coming soon).
+- **Benchmark config:** train/val/test splits + evaluation script.
+- **Leaderboard:** we will maintain a public benchmark page with submitted results after the initial release.
 
-## $\LaTeX$
+{/* §9 — BibTeX */}
 
-You can also add $\LaTeX$ formulas, rendered during the build process using [$\KaTeX$](https://katex.org/) so they're quick to load for visitors of your project page. You can write them inline, like this: $a^2 + b^2 = c^2$. Or, you can write them as a block:
-
-$$
-\int_a^b f(x) dx
-$$
-
-## Citation
-
-If you copy your bibliography into `./bibliography.bib`, you can cite papers using their BibTeX keys, and they'll be automatically formatted and included in the bibliography section at the end. For example: [@vaswani2017attention]. Note that these citations are distinct from footnotes[^mynote], which show up in a separate section if you use them.
-
-[^mynote]: On the web, they should really be called "endnotes", since each page constitutes a full document.
-
-## Table
-
-Add simple tables using [GitHub Flavored Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables):
-
-| Model | Accuracy | F1 score | Training time (hours) |
-| :--- | :---: | :---: | :---: |
-| BERT-base | 0.89 | 0.87 | 4.5 |
-| RoBERTa-large | 0.92 | 0.91 | 7.2 |
-| DistilBERT | 0.86 | 0.84 | 2.1 |
-| XLNet | 0.90 | 0.89 | 6.8 |
-
-## BibTeX citation
-
-Displaying the BibTeX entry for your paper in a code block makes it easy to copy and paste.
+## BibTeX
 
 ```bibtex
-@misc{roman2024academic,
-  author = "{Roman Hauksson}",
-  title = "Academic Project Page Template",
-  year = "2024",
-  howpublished = "\url{https://research-template.roman.technology}",
+@misc{wildcity2026,
+  title  = "{WildCity: A Real-World City-Scale Dataset and Testbed for Spatial Intelligence}",
+  author = "{Anonymous Author(s)}",
+  year   = "2026",
+  note   = "Preprint, under review",
 }
 ```
-
-## Bibliography
-
-[^ref]

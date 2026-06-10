@@ -1,0 +1,16 @@
+---
+// Three equal columns that stack vertically when the screen is too narrow,
+// mirroring TwoColumns.astro.
+---
+
+<div class="flex w-full flex-wrap items-stretch gap-4">
+  <div class="min-w-[16rem] flex-1 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
+    <slot name="left" />
+  </div>
+  <div class="min-w-[16rem] flex-1 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
+    <slot name="middle" />
+  </div>
+  <div class="min-w-[16rem] flex-1 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
+    <slot name="right" />
+  </div>
+</div>

@@ -15,6 +15,7 @@ import { Content, frontmatter } from "../paper.mdx";
 
 interface Frontmatter {
   title: string;
+  tagline?: string;
   authors: Author[];
   conference?: string;
   notes?: Note[];
@@ -27,6 +28,7 @@ interface Frontmatter {
 
 const {
   title,
+  tagline,
   authors,
   conference,
   notes,
@@ -69,6 +71,13 @@ const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
     <header class="mx-auto mb-12 max-w-[50rem] px-6 text-center">
       <h1 class="text-5xl font-medium">{title}</h1>
       <div class="flex flex-col items-center gap-6">
+        {
+          tagline && (
+            <p class="mx-auto max-w-[42rem] text-xl text-zinc-600 dark:text-zinc-300">
+              {tagline}
+            </p>
+          )
+        }
         <Authors authors={authors} />
         {conference && <div>{conference}</div>}
         {notes && <Notes notes={notes} />}
