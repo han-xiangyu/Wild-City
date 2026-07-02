@@ -16,6 +16,9 @@ import { Content, frontmatter } from "../paper.mdx";
 
 interface Frontmatter {
   title: string;
+  brand?: string;
+  brandIcon?: string;
+  subtitle?: string;
   tagline?: string;
   authors: Author[];
   affiliations?: Affiliation[];
@@ -30,6 +33,9 @@ interface Frontmatter {
 
 const {
   title,
+  brand,
+  brandIcon,
+  subtitle,
   tagline,
   authors,
   affiliations,
@@ -44,6 +50,11 @@ const {
 
 const baseUrl = import.meta.env.BASE_URL;
 const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
+const faviconType = favicon.endsWith(".svg")
+  ? "image/svg+xml"
+  : favicon.endsWith(".png")
+    ? "image/png"
+    : undefined;
 ---
 
 <!doctype html>
@@ -54,7 +65,7 @@ const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 
-    <link rel="icon" type="image/svg+xml" href={prefix + favicon} />
+    <link rel="icon" type={faviconType} href={prefix + favicon} />
 
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
@@ -69,29 +80,53 @@ const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
     <title>{title}</title>
   </head>
   <body
-    class="prose prose-lg prose-zinc dark:prose-invert prose-a:text-blue-500 prose-a:dark:text-blue-300 prose-a:no-underline prose-a:hover:underline prose-a:font-normal prose-code:bg-zinc-200 prose-code:dark:bg-zinc-800 prose-code:text-zinc-800 prose-code:dark:text-zinc-200 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-medium prose-code:before:content-none prose-code:after:content-none max-w-none pt-16 pb-6 font-(family-name:--font-noto-sans)"
+    class="prose prose-lg prose-zinc dark:prose-invert prose-a:text-blue-500 prose-a:dark:text-blue-300 prose-a:no-underline prose-a:hover:underline prose-a:font-normal prose-code:bg-zinc-200 prose-code:dark:bg-zinc-800 prose-code:text-zinc-800 prose-code:dark:text-zinc-200 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-medium prose-code:before:content-none prose-code:after:content-none max-w-none pt-6 pb-6 font-(family-name:--font-noto-sans)"
   >
     <header class="mx-auto mb-6 max-w-[62rem] px-6 text-center">
-      <div class="mx-auto flex max-w-[58rem] flex-col items-center gap-0.5">
-        <h1 class="my-0 max-w-[58rem] text-4xl leading-snug font-medium">
-          {title}
-        </h1>
+      <div class="mx-auto flex max-w-[58rem] flex-col items-center gap-3">
+        {
+          brand || brandIcon ? (
+            <Fragment>
+              <h1 class="mt-0 mb-0 flex h-20 items-center justify-center gap-3 leading-none sm:h-24 sm:gap-4">
+                {brandIcon && (
+                  <img
+                    src={prefix + brandIcon}
+                    alt=""
+                    class="h-16 w-auto sm:h-24"
+                  />
+                )}
+                <span class="title-main text-6xl font-extrabold tracking-tight uppercase sm:text-7xl">
+                  {brand ?? title}
+                </span>
+              </h1>
+              {subtitle && (
+                <p class="title-subtitle mt-0 mb-0 max-w-[52rem] text-2xl leading-snug font-medium sm:text-3xl">
+                  {subtitle}
+                </p>
+              )}
+            </Fragment>
+          ) : (
+            <h1 class="mt-0 mb-0 max-w-[58rem] text-4xl leading-snug font-medium">
+              {title}
+            </h1>
+          )
+        }
         {
           conference && (
-            <div class="rounded-full bg-blue-100 px-7 py-1.5 text-2xl font-bold tracking-wide text-blue-800 dark:bg-blue-500/20 dark:text-blue-300">
+            <div class="my-2 rounded-full bg-blue-100 px-7 py-1.5 text-2xl font-bold tracking-wide text-blue-800 dark:bg-blue-500/20 dark:text-blue-300">
               {conference}
             </div>
           )
         }
         {
           tagline && (
-            <p class="my-0 mx-auto max-w-[42rem] text-xl text-zinc-600 dark:text-zinc-300">
+            <p class="mt-0 mb-0 mx-auto max-w-[42rem] text-xl text-zinc-600 dark:text-zinc-300">
               {tagline}
             </p>
           )
         }
       </div>
-      <div class="mx-auto mt-1 flex max-w-[52rem] flex-col items-center gap-6">
+      <div class="mx-auto mt-5 flex max-w-[52rem] flex-col items-center gap-6">
         <Authors authors={authors} />
         {affiliations && <AffiliationLogos affiliations={affiliations} />}
         {notes && <Notes notes={notes} />}
