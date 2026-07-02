@@ -1,9 +1,74 @@
 ---
-title: "WildCity: A Real-World City-Scale Dataset and Testbed for Spatial Intelligence"
-tagline: "1,000+ km of real-world urban driving data across 6 U.S. cities for city-scale reconstruction, rendering, and embodied AI."
+title: "WildCity: A Real-World City-Scale Testbed for Rendering, Simulation, and Spatial Intelligence"
+tagline: "18 long-horizon trajectories · 1,500+ km across six U.S. cities — a real-world, multimodal testbed for city-scale reconstruction, rendering, simulation, and spatial intelligence."
 authors:
-  - name: Anonymous Author(s)
-conference: Preprint · Under Review
+  - name: Xiangyu Han
+    url: "https://han-xiangyu.github.io/"
+    notes: ["1", "2"]
+  - name: Mengyu Yang
+    url: "https://han-xiangyu.github.io/Wild-City/"
+    notes: ["2"]
+  - name: Jiaqi Li
+    url: "https://han-xiangyu.github.io/Wild-City/"
+    notes: ["2"]
+  - name: Bowen Chang
+    url: "https://han-xiangyu.github.io/Wild-City/"
+    notes: ["2"]
+  - name: Ziyu Chen
+    url: "https://ziyc.github.io/"
+    notes: ["4"]
+    newRow: true
+  - name: Hexu Zhao
+    url: "https://tarzanzhao.github.io/"
+    notes: ["2"]
+  - name: Rahul Kumar Agrawal
+    url: "https://han-xiangyu.github.io/Wild-City/"
+    notes: ["1"]
+  - name: Anthony Rodriguez
+    url: "https://han-xiangyu.github.io/Wild-City/"
+    notes: ["1"]
+  - name: Rajani Acharya
+    url: "https://han-xiangyu.github.io/Wild-City/"
+    notes: ["1"]
+    newRow: true
+  - name: Fiona Hua
+    url: "https://han-xiangyu.github.io/Wild-City/"
+    notes: ["1"]
+  - name: Marco Pavone
+    url: "https://stanfordasl.github.io//people/prof-marco-pavone/"
+    notes: ["3", "4"]
+  - name: Chen Feng
+    url: "https://engineering.nyu.edu/faculty/chen-feng"
+    notes: ["2", "†"]
+  - name: Yiming Li
+    url: "https://yimingli-page.github.io/"
+    notes: ["2", "3", "†"]
+affiliations:
+  - name: May Mobility
+    logo: logos/may-mobility.svg
+    url: "https://maymobility.com"
+  - name: New York University
+    logo: logos/nyu.svg
+    url: "https://www.nyu.edu"
+  - name: NVIDIA
+    logo: logos/nvidia.svg
+    url: "https://www.nvidia.com"
+  - name: Stanford University
+    logo: logos/stanford.svg
+    url: "https://www.stanford.edu"
+    imgClass: "max-h-7 max-w-[70%]"
+notes:
+  - symbol: "1"
+    text: May Mobility
+  - symbol: "2"
+    text: New York University
+  - symbol: "3"
+    text: NVIDIA
+  - symbol: "4"
+    text: Stanford University
+  - symbol: "†"
+    text: Corresponding authors
+conference: ECCV 2026
 links:
   - name: Paper
     url: "#"
@@ -14,12 +79,6 @@ links:
   - name: Dataset
     url: "#"
     icon: ri:database-2-line
-  - name: Benchmark
-    url: "#"
-    icon: ri:trophy-line
-  - name: Simulator
-    url: "#"
-    icon: ri:steering-2-line
   - name: BibTeX
     url: "#bibtex"
     icon: ri:double-quotes-l
@@ -31,174 +90,276 @@ theme: device
 favicon: favicon.svg
 
 # These keys are optional. If a link to your project page is in a Google search result, text message, or social media post, it will often appear as a "link preview card" based on its title, description, favicon, and thumbnail.
-description: A real-world, city-scale multimodal dataset and testbed for spatial intelligence — city-scale reconstruction, extrapolated urban view synthesis, and closed-loop simulation.
+description: A real-world, city-scale multimodal testbed for spatial intelligence — 18 long-horizon trajectories totaling 1,500+ km across six U.S. cities, supporting city-scale reconstruction, extrapolated rendering, and closed-loop simulation.
 thumbnail: screenshot-light.png
 ---
 
-import Video from "./components/Video.astro";
 import HighlightedSection from "./components/HighlightedSection.astro";
 import Figure from "./components/Figure.astro";
 import Picture from "./components/Picture.astro";
 import Wide from "./components/Wide.astro";
-import ThreeColumns from "./components/ThreeColumns.astro";
-import Carousel from "./components/Carousel.astro";
-import CarouselSlide from "./components/CarouselSlide.astro";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/starwind/tabs";
-import { Comparison } from "./components/Comparison.tsx";
 
-{/* TODO: replace placeholder assets below with WildCity media.
-    teaser.mp4, montage-{coverage,recon,sim}.png, coverage-map.png,
-    render-{gt,pred}.png, failure-*.png, scaling.pdf */}
-import teaser from "./assets/outside.mp4";
-import dogsTrue from "./assets/dogs-true.png";
-import dogsDiffc from "./assets/dogs-diffc.png";
-import dogsMsillm from "./assets/dogs-msillm.jpg";
+import heroTeaser from "./assets/hero_teaser.png";
+import masksPipeline from "./assets/masks_pipeline.png";
+import coverageRoutes from "./assets/coverage_routes.png";
+import scaleAnalysis from "./assets/scale_analysis.png";
+import compareIntra from "./assets/compare_intra.jpg";
+import compareExtrap from "./assets/compare_extrap.jpg";
+import ablationFig from "./assets/ablation.jpg";
+import cityAtlanta from "./assets/city_atlanta.jpg";
+import cityArlington from "./assets/city_arlington.jpg";
+import cityAnnArbor from "./assets/city_annarbor.jpg";
+import cityEden from "./assets/city_eden.jpg";
+import cityGrandRapids from "./assets/city_grmn.jpg";
+import cityMiami from "./assets/city_miami.jpg";
+import closedLoopDemo from "./assets/closed_loop_demo.mp4";
 
-{/* §2 — Teaser / Overview */}
-
-{/* TODO: replace with WildCity teaser.mp4 (city-scale trajectories, reconstruction, novel-view rendering, closed-loop replay montage). */}
-<Video src={teaser} />
+{/* Teaser / overview */}
 
 <Wide>
-  <ThreeColumns>
-    <Figure slot="left">
-      {/* TODO: replace with montage-coverage.png */}
-      <Picture slot="figure" src={dogsTrue} alt="City-scale data coverage (placeholder)" />
-      <Fragment slot="caption">City-scale data coverage</Fragment>
+  <div class="mx-auto max-w-[74rem] [&>figure]:mt-0">
+    <Figure>
+      <Picture slot="figure" src={heroTeaser} alt="WildCity overview: data collection and processing, city-scale reconstruction, and embodied reasoning" priority />
+      <Fragment slot="caption">
+        **Overview of *WildCity*.** It contains 18 long-horizon trajectories over 1,500&nbsp;km across six real-world cities. We process raw autonomous-fleet logs into multimodal data for city-scale reconstruction, simulation, and closed-loop embodied reasoning.
+      </Fragment>
     </Figure>
-    <Figure slot="middle">
-      {/* TODO: replace with montage-recon.png */}
-      <Picture slot="figure" src={dogsDiffc} alt="Reconstruction and rendering benchmark (placeholder)" />
-      <Fragment slot="caption">Reconstruction &amp; rendering benchmark</Fragment>
-    </Figure>
-    <Figure slot="right">
-      {/* TODO: replace with montage-sim.png */}
-      <Picture slot="figure" src={dogsMsillm} alt="Closed-loop simulator and embodied-AI testbed (placeholder)" />
-      <Fragment slot="caption">Closed-loop simulator / embodied-AI testbed</Fragment>
-    </Figure>
-  </ThreeColumns>
+  </div>
 </Wide>
 
-{/* §3 — Why WildCity? */}
+{/* Why WildCity */}
 
 <HighlightedSection>
 
 ## Why WildCity?
 
-- **Real-world city-scale multimodal dataset.**
-- **6 U.S. cities, 1,000+ km of roads, 2.14M keyframes.**
-- **Benchmark** for scalable urban reconstruction and extrapolated rendering.
-- **Testbed** for closed-loop simulation and spatial intelligence.
+- **Real-world, city-scale multimodal data** collected by autonomous fleets in complex urban environments.
+- **6 U.S. cities · 18 long-horizon logs · 1,507&nbsp;km** of driving, averaging **83.7&nbsp;km (~2.5&nbsp;h) per log** and **~40&nbsp;km² per city**.
+- **3.01M synchronized keyframes** with 6 surround-view cameras, LiDAR, IMU, and GPS.
+- **In-the-wild challenges**: dynamic objects, lighting and appearance changes, motion blur, and imperfect poses.
+- **Baseline + closed-loop simulator** for city-scale reconstruction, extrapolated rendering, and embodied reasoning.
 
 </HighlightedSection>
 
-{/* §4 — Dataset */}
+## Abstract
+
+Humans can navigate an unfamiliar city and gradually form a coherent spatial mental map spanning tens of square kilometers. Can AI build spatial representations at a comparable scale? Although recent foundation models have advanced scene reconstruction and embodied intelligence, scaling to entire cities remains an open challenge, primarily due to the lack of city-scale data. To bridge the gap, we introduce **WildCity**, a real-world multimodal dataset collected by autonomous fleets traversing complex urban environments. Our dataset includes **18 trajectories**, each averaging **83.7 kilometers** in length, and preserves the core challenges of in-the-wild perception, e.g., dynamic objects, lighting variations, and imperfect camera poses. We further establish an urban-tailored reconstruction baseline and convert the reconstructed environments into a closed-loop simulator. Beyond the dataset and baseline, we systematically analyze the key challenges on the path to simulation-ready urban digital twins: **scalability**, **extrapolation**, and **uncertainty**. Ultimately, WildCity aims to catalyze progress not only in city-scale rendering, but more broadly in the pursuit of AI that can perceive, remember, and reason across space at a scale comparable to human cognition.
 
 ## Dataset
 
-WildCity is collected from real-world urban driving across six U.S. cities, with synchronized surround-view cameras, LiDAR, IMU, and GPS.
+WildCity is collected from real-world urban driving across **six U.S. cities** — Atlanta, Arlington, Ann Arbor, Eden Prairie, Grand Rapids, and Miami — with a multimodal sensor suite: a roof-mounted LiDAR, six surround-view RGB cameras (three narrow-angle forward, three wide-angle lateral/rear), an IMU, and a GPS receiver, all rigorously calibrated to the ego frame. Logs are captured on different days during regular daytime operations, naturally introducing variation in illumination, weather, appearance, and traffic dynamics.
 
-| Category | WildCity |
+<p class="mx-auto max-w-[54rem] text-center text-sm text-zinc-600 dark:text-zinc-400"><strong>Dataset &amp; reconstruction statistics.</strong> Sensor configuration, total data scale, and the compute footprint required for reconstruction at increasing trajectory lengths.</p>
+
+<div class="no-row-highlight">
+
+| Statistic | Value |
 | :--- | :--- |
 | Cities | 6 U.S. cities |
-| Road coverage | 1,000+ km |
-| Trajectories | 18 |
-| Keyframes | 2.14M |
-| Cameras | 6 surround-view RGB |
-| RGB resolution / FPS | 1440×928 / 10 Hz |
-| LiDAR | 10 Hz |
-| IMU / GPS | 10 Hz / 2 Hz |
+| Driving logs | 18 (3 per city) |
+| Total distance | 1,507.1&nbsp;km |
+| Per log | 83.7&nbsp;km · ~2.5&nbsp;h |
+| Coverage per city | ~40.18&nbsp;km² |
+| Total keyframes | 3.01M |
+| RGB cameras / resolution | 3 @ 1440×928 + 3 @ 1240×728 |
+| LiDAR points / frame | 80k original / 15k downsampled |
+| Rate (Cam / LiDAR / GPS / IMU) | 10 / 10 / 10 / 100 Hz |
+| Keyframe spacing | 0.5&nbsp;m |
+| Segment lengths | 50&nbsp;m – 5&nbsp;km |
+| Avg. Gaussians @ 0.5 / 1 / 2.5 / 5&nbsp;km | 6M / 12M / 30M / 60M |
+| Min. VRAM @ 0.5 / 1 / 2.5 / 5&nbsp;km | 1×24G / 1×40G / 1×80G / 2×80G |
+
+</div>
+
+<Wide>
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <Figure>
+      <Picture slot="figure" src={cityAtlanta} alt="Atlanta trajectory coverage" />
+      <Fragment slot="caption">Atlanta</Fragment>
+    </Figure>
+    <Figure>
+      <Picture slot="figure" src={cityArlington} alt="Arlington trajectory coverage" />
+      <Fragment slot="caption">Arlington</Fragment>
+    </Figure>
+    <Figure>
+      <Picture slot="figure" src={cityAnnArbor} alt="Ann Arbor trajectory coverage" />
+      <Fragment slot="caption">Ann Arbor</Fragment>
+    </Figure>
+    <Figure>
+      <Picture slot="figure" src={cityEden} alt="Eden Prairie trajectory coverage" />
+      <Fragment slot="caption">Eden Prairie</Fragment>
+    </Figure>
+    <Figure>
+      <Picture slot="figure" src={cityGrandRapids} alt="Grand Rapids trajectory coverage" />
+      <Fragment slot="caption">Grand Rapids</Fragment>
+    </Figure>
+    <Figure>
+      <Picture slot="figure" src={cityMiami} alt="Miami trajectory coverage" />
+      <Fragment slot="caption">Miami</Fragment>
+    </Figure>
+  </div>
+</Wide>
+
+<p class="mx-auto max-w-[54rem] text-center text-sm text-zinc-600 dark:text-zinc-400"><strong>Geographic coverage across six U.S. cities.</strong> Trajectories collected in each city; colors mark the 5-km segments used for standardized data organization and reconstruction.</p>
+
+<Figure>
+  <Picture slot="figure" src={coverageRoutes} alt="Traversed distance per log across the six cities" />
+  <Fragment slot="caption">
+    **Log-level route coverage.** Each bar is one continuous driving log; logs within each city are sorted by traversed distance, highlighting the long-horizon, multi-city nature of *WildCity*.
+  </Fragment>
+</Figure>
+
+## Reconstruction Baseline
+
+We establish an urban-tailored 3D Gaussian Splatting baseline for large, noisy, and unbounded street scenes:
+
+- **Rig pose optimization** jointly refines per-keyframe ego poses and camera extrinsics, respecting the rigid multi-camera setup for globally consistent geometry.
+- **Sky model** — a lightweight view-dependent MLP composites an infinite background, decoupling sky appearance from scene geometry and reducing far-depth floaters.
+- **Ground regularization** stabilizes weakly constrained road surfaces via height, alignment, and opacity priors on ground Gaussians.
+- **Extrapolated-view post-repair** progressively renders, repairs (Difix3D+), and re-optimizes to mitigate artifacts under off-trajectory viewpoints.
+- **Multi-GPU training** shards Gaussian parameters across devices to scale to billion-level primitives with bounded per-GPU memory.
+
+To support region-aware reconstruction, we generate ground, sky, and dynamic-object masks (via SAM3 with text prompts) and use 3D tracking cuboids to separate truly dynamic objects from stationary instances.
 
 <Wide>
   <Figure>
-    {/* TODO: replace with coverage-map.png (map / trajectory coverage across the 6 cities). */}
-    <Picture slot="figure" src={dogsTrue} alt="Map of trajectory coverage across cities (placeholder)" />
-    <Fragment slot="caption">Trajectory coverage across the six cities.</Fragment>
+    <Picture slot="figure" src={masksPipeline} alt="Semantic masks for region-aware reconstruction: ground truth, semantic mask, RGB render, and LiDAR depth" />
+    <Fragment slot="caption">
+      **Semantic masks for region-aware reconstruction.** Ground, sky, and dynamic-object masks support road regularization, sky modeling, and moving-object filtering. 3D tracking cuboids distinguish truly dynamic objects (red, masked out) from stationary instances (green, preserved).
+    </Fragment>
   </Figure>
 </Wide>
 
-{/* §5 — Benchmark Tasks */}
+<p class="mx-auto max-w-[54rem] text-center text-sm text-zinc-600 dark:text-zinc-400"><strong>Quantitative validation of semantic masks.</strong> Automatically generated dynamic, sky, and ground masks evaluated against 100 manually annotated images across four cities (mIoU, %); the high overall score confirms reliable region-level supervision.</p>
 
-## Benchmark Tasks
+| City | Images | Dynamic | Sky | Ground | mIoU |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Ann Arbor | 20 | 83.60 | 96.50 | 95.31 | 91.80 |
+| Atlanta | 30 | 88.57 | 84.27 | 93.86 | 88.90 |
+| Arlington | 25 | 88.95 | 93.94 | 94.14 | 92.34 |
+| Eden Prairie | 25 | 90.11 | 87.62 | 93.95 | 90.56 |
+| **Overall** | **100** | **88.48** | **92.01** | **94.24** | **91.58** |
 
-<ThreeColumns>
-  <div slot="left" class="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
-    <h3>Task 1 · City-scale Reconstruction</h3>
-    <p>Scalability, memory, compute, and reconstruction quality at city scale.</p>
-  </div>
-  <div slot="middle" class="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
-    <h3>Task 2 · Extrapolated Urban View Synthesis</h3>
-    <p>Cross-view, cross-trajectory, and long-range extrapolated rendering.</p>
-  </div>
-  <div slot="right" class="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
-    <h3>Task 3 · Closed-loop Simulation / Embodied AI</h3>
-    <p>Trajectory replay, sensor rendering, and policy evaluation in the loop.</p>
-  </div>
-</ThreeColumns>
+## Closed-loop Simulation
 
-{/* §6 — Results / Baselines */}
+WildCity turns reconstructed environments into a closed-loop simulator: a Vision-Language-Action model iteratively predicts the next target pose from the current observation and task, then receives the rendered view at that pose. Using **Alpamayo&nbsp;1** as a proof of concept, we observe smooth navigation and plausible multi-step reasoning in the reconstructed urban environment.
+
+<Wide>
+  <video
+    src={closedLoopDemo}
+    autoplay
+    loop
+    muted
+    playsinline
+    class="h-auto w-full rounded-lg"
+  ></video>
+</Wide>
+
+<p class="text-center text-sm text-zinc-600 dark:text-zinc-300">Closed-loop simulation demo: an Alpamayo agent perceives surround-view renderings, reasons over the task (chain-of-thought), and acts by planning its next trajectory.</p>
 
 ## Results
 
-We show representative results to build intuition; full quantitative tables are in the paper.
+We evaluate 3D reconstruction across spatial scales using two sequences captured with the same sensor setup: **Ann Arbor** (short, 0.25&nbsp;km) and **Atlanta** (long, 2.5&nbsp;km). We report PSNR, SSIM, and LPIPS on static regions, and Depth-L1 (meters) on pixels with valid LiDAR depth. Best per column in **bold**.
 
-{/* TODO: replace with render-pred.png (left) and render-gt.png (right). */}
-<Comparison client:idle>
-  <Picture slot="itemOne" src={dogsDiffc} alt="Rendered novel view (placeholder)" />
-  <Picture slot="itemTwo" src={dogsTrue} alt="Ground-truth view (placeholder)" />
-</Comparison>
+<p class="mx-auto max-w-[54rem] text-center text-sm text-zinc-600 dark:text-zinc-400"><strong>Quantitative comparison — Ann Arbor (0.25&nbsp;km, short; 500 frames).</strong> Reconstruction quality versus baselines; best per column in bold.</p>
 
-<Tabs defaultValue="rendering">
+| Method | PSNR ↑ | SSIM ↑ | LPIPS ↓ | Depth-L1 ↓ |
+| :--- | :---: | :---: | :---: | :---: |
+| 3DGS | 20.00 | 0.829 | 0.581 | 32.70 |
+| H-3DGS | 27.59 | 0.849 | 0.318 | 18.45 |
+| CityGS | 24.41 | 0.856 | 0.409 | 17.05 |
+| VGGT-Long | – | – | – | 29.63 |
+| VGGT-Long + CityGS | 20.98 | 0.663 | 0.535 | 22.70 |
+| **Ours** | **29.99** | **0.917** | **0.240** | **15.16** |
+
+<p class="mx-auto max-w-[54rem] text-center text-sm text-zinc-600 dark:text-zinc-400"><strong>Quantitative comparison — Atlanta (2.5&nbsp;km, long; 5,000 frames).</strong> Reconstruction quality versus baselines; best per column in bold.</p>
+
+| Method | PSNR ↑ | SSIM ↑ | LPIPS ↓ | Depth-L1 ↓ |
+| :--- | :---: | :---: | :---: | :---: |
+| 3DGS | 19.39 | 0.715 | 0.492 | 15.45 |
+| H-3DGS | 21.40 | 0.747 | **0.380** | 14.37 |
+| CityGS | 21.27 | 0.762 | 0.536 | 8.35 |
+| VGGT-Long | – | – | – | 19.72 |
+| VGGT-Long + CityGS | 13.40 | 0.666 | 0.745 | 20.93 |
+| **Ours** | **23.14** | **0.799** | 0.477 | **6.62** |
+
+> Partitioning and hierarchy help scale to large scenes, but alone they do not resolve the geometric ambiguity of narrow, long street-view trajectories. Reliable city-scale reconstruction requires structural constraints and pose consistency — not just memory-efficient scene decomposition.
+
+### Qualitative comparison
+
+<Tabs defaultValue="intra">
   <TabsList>
-    <TabsTrigger value="rendering">Cross-city rendering</TabsTrigger>
-    <TabsTrigger value="failure">Failure cases</TabsTrigger>
-    <TabsTrigger value="scaling">Compute &amp; memory</TabsTrigger>
+    <TabsTrigger value="intra">In-trajectory</TabsTrigger>
+    <TabsTrigger value="extrap">Extrapolation</TabsTrigger>
   </TabsList>
-  <TabsContent value="rendering">
-    {/* TODO: replace each slide with a per-city rendering example. */}
-    <Carousel>
-      <CarouselSlide>
-        <Picture src={dogsTrue} alt="Rendering example, city 1 (placeholder)" />
-      </CarouselSlide>
-      <CarouselSlide>
-        <Picture src={dogsDiffc} alt="Rendering example, city 2 (placeholder)" />
-      </CarouselSlide>
-      <CarouselSlide>
-        <Picture src={dogsMsillm} alt="Rendering example, city 3 (placeholder)" />
-      </CarouselSlide>
-    </Carousel>
-  </TabsContent>
-  <TabsContent value="failure">
+  <TabsContent value="intra">
     <Figure>
-      {/* TODO: replace with failure-*.png (extrapolation, dynamic objects, uncertainty). */}
-      <Picture slot="figure" src={dogsMsillm} alt="Failure case (placeholder)" />
+      <Picture slot="figure" src={compareIntra} alt="In-trajectory rendering comparison: GT, 3DGS, H-3DGS, Ours" />
       <Fragment slot="caption">
-        Failure modes: long-range extrapolation, dynamic objects, and uncertain regions.
+        In-trajectory test views. Baselines over-smooth large scenes and lose thin structures; our method produces sharper textures and cleaner edges (green) where baselines fail (red).
       </Fragment>
     </Figure>
   </TabsContent>
-  <TabsContent value="scaling">
+  <TabsContent value="extrap">
     <Figure>
-      {/* TODO: replace with scaling.pdf (compute/memory vs. scene scale). Picture auto-converts PDFs. */}
-      <Picture slot="figure" src={dogsDiffc} alt="Compute and memory scaling (placeholder)" />
-      <Fragment slot="caption">Compute and memory scaling with scene size.</Fragment>
+      <Picture slot="figure" src={compareExtrap} alt="Extrapolated rendering comparison: 3DGS, H-3DGS, Ours, Ours + Difix repair" />
+      <Fragment slot="caption">
+        Extrapolated views sampled 0.5&nbsp;m outside the trajectory. All methods degrade, but baselines show stronger blur and floaters; our results retain clearer layout, and Difix-based repair further mitigates artifacts.
+      </Fragment>
     </Figure>
   </TabsContent>
 </Tabs>
 
-{/* §7 — Release Scope & Privacy */}
+> For closed-loop simulation, in-trajectory quality is not enough: agents must query views beyond the recorded path. Simulation-ready urban digital twins therefore require stable geometry and coherent appearance under off-trajectory viewpoints.
+
+### Scaling & ablation
+
+We analyze three coupled bottlenecks on the path to simulation-ready digital twins — **scalability**, **extrapolation**, and **uncertainty**.
+
+<Tabs defaultValue="scaling">
+  <TabsList>
+    <TabsTrigger value="scaling">Scalability</TabsTrigger>
+    <TabsTrigger value="ablation">Component ablation</TabsTrigger>
+  </TabsList>
+  <TabsContent value="scaling">
+    <Figure>
+      <Picture slot="figure" src={scaleAnalysis} alt="Reconstruction quality, VRAM, and Gaussian count across data scales" />
+      <Fragment slot="caption">
+        With matched Gaussian budgets, real-world *WildCity* degrades more severely than synthetic CARLA as scale grows, indicating that city-scale reconstruction is constrained not only by capacity but also by accumulated pose, appearance, and uncertainty challenges.
+      </Fragment>
+    </Figure>
+  </TabsContent>
+  <TabsContent value="ablation">
+    <Figure>
+      <Picture slot="figure" src={ablationFig} alt="Qualitative ablation of ground regularization, sky model, and rig pose optimization" />
+      <Fragment slot="caption">
+        Removing ground regularization destabilizes road geometry, removing the sky model introduces background artifacts, and removing rig pose optimization causes multi-view misalignment from pose noise.
+      </Fragment>
+    </Figure>
+  </TabsContent>
+</Tabs>
+
+Notably, 2D image metrics can misalign with geometric quality: dropping the sky model yields a small PSNR change but collapses Depth-L1 (148.54&nbsp;m), and dropping ground regularization slightly improves 2D metrics while hurting structural consistency.
+
+<p class="mx-auto max-w-[54rem] text-center text-sm text-zinc-600 dark:text-zinc-400"><strong>Component ablation.</strong> Effect of ground regularization, sky modeling, and rig pose optimization on Arlington (0.1&nbsp;km) and Atlanta (0.25&nbsp;km); the full model (final row, highlighted) balances 2D fidelity and geometric consistency.</p>
+
+| Ground | Sky | Pose&nbsp;Opt. | PSNR ↑ (Arl.) | SSIM ↑ | LPIPS ↓ | PSNR ↑ (Atl.) | SSIM ↑ | LPIPS ↓ | Depth-L1 ↓ |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| ✗ | ✓ | ✓ | 30.14 | 0.924 | 0.186 | 26.35 | 0.864 | 0.288 | 13.11 |
+| ✓ | ✗ | ✓ | 28.69 | 0.903 | 0.230 | 24.72 | 0.829 | 0.362 | 148.54 |
+| ✓ | ✓ | ✗ | 29.33 | 0.913 | 0.199 | 25.51 | 0.843 | 0.320 | 14.29 |
+| ✓ | ✓ | ✓ | 29.60 | 0.910 | 0.217 | 25.42 | 0.815 | 0.342 | 13.26 |
 
 ## Release Scope & Privacy
 
 - We release **anonymized** sensor data only.
-- Faces and license plates are **blurred** (e.g., with EgoBlur).
+- Faces and license plates are **blurred**.
 - Raw, **unblurred** images are **not** distributed.
 - Released modalities: **RGB, LiDAR, calibration, poses, masks, train/val/test splits, code, and configs**.
 - Sensitive locations are handled with care and excluded where appropriate.
 - Distributed under a documented **license / terms of use**.
 - Access is granted via a **dataset request form** (link coming soon).
-
-{/* §8 — Code / Data / Leaderboard */}
 
 ## Code, Data & Benchmark
 
@@ -207,15 +368,13 @@ We show representative results to build intuition; full quantitative tables are 
 - **Benchmark config:** train/val/test splits + evaluation script.
 - **Leaderboard:** we will maintain a public benchmark page with submitted results after the initial release.
 
-{/* §9 — BibTeX */}
-
 ## BibTeX
 
 ```bibtex
-@misc{wildcity2026,
-  title  = "{WildCity: A Real-World City-Scale Dataset and Testbed for Spatial Intelligence}",
-  author = "{Anonymous Author(s)}",
-  year   = "2026",
-  note   = "Preprint, under review",
+@inproceedings{wildcity2026,
+  title     = {WildCity: A Real-World City-Scale Testbed for Rendering, Simulation, and Spatial Intelligence},
+  author    = {Han, Xiangyu and Yang, Mengyu and Li, Jiaqi and Chang, Bowen and Chen, Ziyu and Zhao, Hexu and Agrawal, Rahul Kumar and Rodriguez, Anthony and Acharya, Rajani and Hua, Fiona and Pavone, Marco and Feng, Chen and Li, Yiming},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2026},
 }
 ```

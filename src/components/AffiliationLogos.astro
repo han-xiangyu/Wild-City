@@ -1,0 +1,37 @@
+---
+import type { Affiliation } from "../types/types";
+
+interface Props {
+  affiliations: Affiliation[];
+}
+
+const { affiliations } = Astro.props;
+
+// Logos live in /public/logos and must respect the deploy base path,
+// matching how the favicon is referenced in index.astro.
+const baseUrl = import.meta.env.BASE_URL;
+const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
+---
+
+<div class="not-prose flex flex-row flex-wrap items-center justify-center gap-3">
+  {
+    affiliations.map((affiliation) => (
+      <a
+        href={affiliation.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex h-16 w-44 items-center justify-center rounded-xl bg-white px-5 shadow-sm ring-1 ring-zinc-200 transition-shadow hover:shadow-md dark:ring-zinc-700"
+      >
+        <img
+          src={prefix + affiliation.logo}
+          alt={affiliation.name}
+          class:list={[
+            affiliation.imgClass ?? "max-h-9 max-w-full",
+            "w-auto object-contain",
+          ]}
+          loading="lazy"
+        />
+      </a>
+    ))
+  }
+</div>
