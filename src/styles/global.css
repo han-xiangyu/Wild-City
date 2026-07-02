@@ -59,6 +59,34 @@ main .katex-display {
   margin-left: 2rem;
 }
 
+/* Highlight the final (summary / best) row of every table. */
+main table tbody tr:last-child {
+  background-color: var(--color-blue-50);
+  font-weight: 600;
+}
+[data-theme="dark"] main table tbody tr:last-child {
+  background-color: color-mix(in srgb, var(--color-blue-400) 16%, transparent);
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme="device"] main table tbody tr:last-child {
+    background-color: color-mix(in srgb, var(--color-blue-400) 16%, transparent);
+  }
+}
+
+/* Opt a table out of the final-row highlight (e.g., the dataset stats table). */
+.no-row-highlight table tbody tr:last-child {
+  background-color: transparent;
+  font-weight: normal;
+}
+[data-theme="dark"] .no-row-highlight table tbody tr:last-child {
+  background-color: transparent;
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme="device"] .no-row-highlight table tbody tr:last-child {
+    background-color: transparent;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
