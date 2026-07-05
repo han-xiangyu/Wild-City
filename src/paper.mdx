@@ -319,32 +319,20 @@ We evaluate 3D reconstruction across spatial scales using two sequences captured
 
 > For closed-loop simulation, in-trajectory quality is not enough: agents must query views beyond the recorded path. Simulation-ready urban digital twins therefore require stable geometry and coherent appearance under off-trajectory viewpoints.
 
-### Scaling & ablation
-
 We analyze three coupled bottlenecks on the path to simulation-ready digital twins — **scalability**, **extrapolation**, and **uncertainty**.
 
-<Tabs defaultValue="scaling">
-  <TabsList>
-    <TabsTrigger value="scaling">Scalability</TabsTrigger>
-    <TabsTrigger value="ablation">Component ablation</TabsTrigger>
-  </TabsList>
-  <TabsContent value="scaling">
-    <Figure>
-      <Picture slot="figure" src={scaleAnalysis} alt="Reconstruction quality, VRAM, and Gaussian count across data scales" />
-      <Fragment slot="caption">
-        With matched Gaussian budgets, real-world *WildCity* degrades more severely than synthetic CARLA as scale grows, indicating that city-scale reconstruction is constrained not only by capacity but also by accumulated pose, appearance, and uncertainty challenges.
-      </Fragment>
-    </Figure>
-  </TabsContent>
-  <TabsContent value="ablation">
+### Component ablation
+
+<Wide>
+  <div class="mx-auto max-w-[74rem] [&>figure]:mt-0">
     <Figure>
       <Picture slot="figure" src={ablationFig} alt="Qualitative ablation of ground regularization, sky model, and rig pose optimization" />
       <Fragment slot="caption">
         Removing ground regularization destabilizes road geometry, removing the sky model introduces background artifacts, and removing rig pose optimization causes multi-view misalignment from pose noise.
       </Fragment>
     </Figure>
-  </TabsContent>
-</Tabs>
+  </div>
+</Wide>
 
 Notably, 2D image metrics can misalign with geometric quality: dropping the sky model yields a small PSNR change but collapses Depth-L1 (148.54&nbsp;m), and dropping ground regularization slightly improves 2D metrics while hurting structural consistency.
 
@@ -356,6 +344,15 @@ Notably, 2D image metrics can misalign with geometric quality: dropping the sky 
 | ✓ | ✗ | ✓ | 28.69 | 0.903 | 0.230 | 24.72 | 0.829 | 0.362 | 148.54 |
 | ✓ | ✓ | ✗ | 29.33 | 0.913 | 0.199 | 25.51 | 0.843 | 0.320 | 14.29 |
 | ✓ | ✓ | ✓ | 29.60 | 0.910 | 0.217 | 25.42 | 0.815 | 0.342 | 13.26 |
+
+### Scalability
+
+<Figure>
+  <Picture slot="figure" src={scaleAnalysis} alt="Reconstruction quality, VRAM, and Gaussian count across data scales" />
+  <Fragment slot="caption">
+    With matched Gaussian budgets, real-world *WildCity* degrades more severely than synthetic CARLA as scale grows, indicating that city-scale reconstruction is constrained not only by capacity but also by accumulated pose, appearance, and uncertainty challenges.
+  </Fragment>
+</Figure>
 
 ## Release Scope & Privacy
 
