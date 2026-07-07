@@ -104,6 +104,7 @@ import HighlightedSection from "./components/HighlightedSection.astro";
 import Figure from "./components/Figure.astro";
 import Picture from "./components/Picture.astro";
 import Wide from "./components/Wide.astro";
+import YouTubeVideo from "./components/YouTubeVideo.astro";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/starwind/tabs";
 
 import heroTeaser from "./assets/hero_teaser.png";
@@ -124,13 +125,8 @@ import closedLoopDemo from "./assets/closed_loop_demo.mp4";
 {/* Teaser / overview */}
 
 <Wide>
-  <div class="mx-auto max-w-[74rem] [&>figure]:mt-0">
-    <Figure>
-      <Picture slot="figure" src={heroTeaser} alt="WildCity overview: data collection and processing, city-scale reconstruction, and embodied reasoning" priority />
-      <Fragment slot="caption">
-        **Overview of *WildCity*.** It contains 18 long-horizon trajectories over 1,500&nbsp;km across six real-world cities. We process raw autonomous-fleet logs into multimodal data for city-scale reconstruction, simulation, and closed-loop embodied reasoning.
-      </Fragment>
-    </Figure>
+  <div class="mx-auto mb-8 max-w-[74rem]">
+    <YouTubeVideo videoId="oZiwNBSqRZU" aspectRatio={3352 / 1440} />
   </div>
 </Wide>
 
@@ -147,6 +143,19 @@ import closedLoopDemo from "./assets/closed_loop_demo.mp4";
 - **Baseline + closed-loop simulator** for city-scale reconstruction, extrapolated rendering, and embodied reasoning.
 
 </HighlightedSection>
+
+{/* Overview figure */}
+
+<Wide>
+  <div class="mx-auto max-w-[74rem] [&>figure]:mt-0">
+    <Figure>
+      <Picture slot="figure" src={heroTeaser} alt="WildCity overview: data collection and processing, city-scale reconstruction, and embodied reasoning" priority />
+      <Fragment slot="caption">
+        **Overview of *WildCity*.** It contains 18 long-horizon trajectories over 1,500&nbsp;km across six real-world cities. We process raw autonomous-fleet logs into multimodal data for city-scale reconstruction, simulation, and closed-loop embodied reasoning.
+      </Fragment>
+    </Figure>
+  </div>
+</Wide>
 
 ## Abstract
 
