@@ -2,7 +2,8 @@
 
 # WildCity
 ### A Real-World City-Scale Testbed for Rendering, Simulation, and Spatial Intelligence
-**ECCV 2026**
+
+### ECCV 2026
 
 [**Xiangyu Han**](https://han-xiangyu.github.io/)<sup>1,2</sup> ,
 **Mengyu Yang**<sup>2</sup> ,
@@ -26,9 +27,16 @@
 
 <a href="https://han-xiangyu.github.io/Wild-City/"><img src="https://img.shields.io/badge/Project_Page-WildCity-blue" alt="Project Page"></a>
 <a href="https://han-xiangyu.github.io/Wild-City/"><img src="https://img.shields.io/badge/Paper-coming_soon-lightgrey" alt="Paper (coming soon)"></a>
-<a href="https://han-xiangyu.github.io/Wild-City/"><img src="https://img.shields.io/badge/Dataset-coming_soon-lightgrey" alt="Dataset (coming soon)"></a>
+<a href="https://huggingface.co/datasets/Neptune615/Wild-City"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow" alt="Dataset"></a>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg" alt="License: CC BY-NC-SA 4.0"></a>
 
 </div>
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=oZiwNBSqRZU">
+    <img src="https://img.youtube.com/vi/oZiwNBSqRZU/maxresdefault.jpg" alt="WildCity video overview" width="100%">
+  </a>
+</p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/han-xiangyu/Wild-City/page/src/assets/hero_teaser.png" alt="WildCity overview: data collection and processing, city-scale reconstruction, and embodied reasoning" width="100%">
@@ -55,12 +63,6 @@ This repository will host the official dataset tooling, reconstruction baseline,
 
 Humans can navigate an unfamiliar city and gradually form a coherent spatial mental map spanning tens of square kilometers. Can AI build spatial representations at a comparable scale? Although recent foundation models have advanced scene reconstruction and embodied intelligence, scaling to entire cities remains an open challenge, primarily due to the lack of city-scale data. To bridge the gap, we introduce **WildCity**, a real-world multimodal dataset collected by autonomous fleets traversing complex urban environments. Our dataset includes 18 trajectories, each averaging 83.7 kilometers in length, and preserves the core challenges of in-the-wild perception, e.g., dynamic objects, lighting variations, and imperfect camera poses. We further establish an urban-tailored reconstruction baseline and convert the reconstructed environments into a closed-loop simulator. Beyond the dataset and baseline, we systematically analyze the key challenges on the path to simulation-ready urban digital twins: scalability, extrapolation, and uncertainty. Ultimately, WildCity aims to catalyze progress not only in city-scale rendering, but more broadly in the pursuit of AI that can perceive, remember, and reason across space at a scale comparable to human cognition.
 
-## Links
-
-- 🌐 **Project Page:** https://han-xiangyu.github.io/Wild-City/
-- 📄 **Paper:** coming soon
-- 📦 **Dataset:** coming soon
-
 ## Citation
 
 If you find WildCity useful in your research, please consider citing (this entry will be updated with the final venue details upon publication):
@@ -73,6 +75,10 @@ If you find WildCity useful in your research, please consider citing (this entry
       year={2026},
 }
 ```
+
+## License
+
+WildCity (dataset, code, and associated materials) is released under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**. See [LICENSE](./LICENSE) for the full notice.
 
 ## Contact
 

@@ -1,0 +1,39 @@
+WildCity Dataset License Notice
+
+SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+Copyright (c) 2026, WildCity Dataset Authors and May Mobility.
+All rights reserved except as expressly granted below.
+
+This dataset is made available under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0), unless otherwise specified.
+
+Official license deed:
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+Official legal code:
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+Summary of key terms:
+
+1. Attribution
+   You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+
+2. NonCommercial
+   You may not use the dataset for commercial purposes.
+
+3. ShareAlike
+   If you remix, transform, or build upon the dataset and share the resulting material, you must distribute your contributions under the same license as the original.
+
+4. No additional restrictions
+   You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+This notice is provided for convenience. The official CC BY-NC-SA 4.0 legal code governs the license terms.
+
+Recommended citation:
+
+@inproceedings{han2026wildcity,
+  title     = {WildCity: A Real-World City-Scale Testbed for Rendering, Simulation, and Spatial Intelligence},
+  author    = {Han, Xiangyu and Yang, Mengyu and Li, Jiaqi and Chang, Bowen and Chen, Ziyu and Zhao, Hexu and Agrawal, Rahul Kumar and Rodriguez, Anthony and Acharya, Rajani and Hua, Fiona and Pavone, Marco and Feng, Chen and Li, Yiming},
+  booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+  year      = {2026}
+}
