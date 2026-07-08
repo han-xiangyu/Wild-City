@@ -1,6 +1,6 @@
 <div align="center">
 
-# WildCity
+# <img src="https://raw.githubusercontent.com/han-xiangyu/Wild-City/page/public/wild-city.png" width="40" valign="bottom" alt=""> WildCity
 ### A Real-World City-Scale Testbed for Rendering, Simulation, and Spatial Intelligence
 
 ### ECCV 2026
