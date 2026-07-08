@@ -33,9 +33,7 @@
 </div>
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=oZiwNBSqRZU">
-    <img src="https://img.youtube.com/vi/oZiwNBSqRZU/maxresdefault.jpg" alt="WildCity video overview" width="100%">
-  </a>
+  <img src="https://raw.githubusercontent.com/han-xiangyu/Wild-City/page/public/wild-city-demo.gif" alt="WildCity demo: raw camera, LiDAR overlay, and semantic mask grids across driving logs" width="100%">
 </p>
 
 <p align="center">
