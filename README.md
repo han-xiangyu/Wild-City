@@ -26,7 +26,7 @@
 <sup>†</sup>Corresponding authors
 
 <a href="https://han-xiangyu.github.io/Wild-City/"><img src="https://img.shields.io/badge/Project_Page-WildCity-blue" alt="Project Page"></a>
-<a href="https://han-xiangyu.github.io/Wild-City/"><img src="https://img.shields.io/badge/Paper-coming_soon-lightgrey" alt="Paper (coming soon)"></a>
+<a href="https://arxiv.org/abs/2607.06838"><img src="https://img.shields.io/badge/arXiv-2607.06838-red" alt="arXiv"></a>
 <a href="https://huggingface.co/datasets/Neptune615/Wild-City"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow" alt="Dataset"></a>
 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg" alt="License: CC BY-NC-SA 4.0"></a>
 
@@ -71,6 +71,7 @@ If you find WildCity useful in your research, please consider citing (this entry
       author={Han, Xiangyu and Yang, Mengyu and Li, Jiaqi and Chang, Bowen and Chen, Ziyu and Zhao, Hexu and Agrawal, Rahul Kumar and Rodriguez, Anthony and Acharya, Rajani and Hua, Fiona and Pavone, Marco and Feng, Chen and Li, Yiming},
       booktitle={European Conference on Computer Vision (ECCV)},
       year={2026},
+      url={https://arxiv.org/abs/2607.06838},
 }
 ```
 
